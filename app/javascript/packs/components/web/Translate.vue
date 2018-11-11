@@ -1,18 +1,17 @@
 <template>
     <div class="container">
         <h1>Translate</h1>
-        <vue-dictaphone @stop="handleRecording($event)">
-  <template slot-scope="{ isRecording, startRecording, stopRecording, deleteRecording }">
-    <button v-if="!isRecording" @click="startRecording">Start recording</button>
-    <button v-else @click="stopRecording">Stop recording</button>
-  </template>
-</vue-dictaphone>
+        <vue-dictaphone @stop="handleRecording($event)" mime-type="audio/mp3">
+            <template slot-scope="{ isRecording, startRecording, stopRecording, deleteRecording }">
+                <button v-if="!isRecording" @click="startRecording">Start recording</button>
+                <button v-else @click="stopRecording">Stop recording</button>
+            </template>
+        </vue-dictaphone>
 
-<vue-dictaphone-spectrum-analyser/>
-
-<template v-if="audioSource">
-  <audio :src="audioSource" controls></audio>
-</template>
+        <vue-dictaphone-spectrum-analyser/>
+        <template v-if="audioSource">
+            <audio :src="audioSource" controls></audio>
+        </template>
     </div>
 </template>
 
